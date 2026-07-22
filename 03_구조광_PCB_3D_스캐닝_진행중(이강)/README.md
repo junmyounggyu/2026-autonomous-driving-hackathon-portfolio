@@ -4,9 +4,7 @@
 
 **현재 상태: 진행 중 / 캡처·디코딩 소프트웨어 구현 단계**
 
-![4-step phase shifting에 사용하는 sine 패턴 예시](../assets/fpp_sine_pattern.png)
-
-## 세 저장소를 하나로 묶은 이유
+## 프로젝트 구성
 
 | 단계 | 저장소 | 책임 |
 | --- | --- | --- |
@@ -71,12 +69,11 @@ White / Black correction
 - 결과를 NumPy 배열, heat map, JSON 보고서, 선택적 PLY point cloud로 저장합니다.
 - GUI와 PyInstaller 기반 Windows 실행 파일 경로를 제공합니다.
 
-## 현재 한계와 검증 원칙
+## 개발 현황
 
 - Android 경로는 PNG 저장·업로드까지 구현되어 있고 RAW/DNG와 하드웨어 트리거 동기화는 아직 포함되지 않았습니다.
-- metric height는 기준면과 실장비 캘리브레이션 없이는 주장할 수 없습니다. `relative` 결과는 형상·phase 미리보기로 구분해야 합니다.
-- 프로젝터 기울기, 초점면, PCB 반사·포화가 결과에 직접 영향을 주므로 valid mask와 진단 이미지를 height map과 함께 확인합니다.
-- 최종 단계에서는 표준 높이 시편을 이용해 bias, repeatability, valid-pixel ratio를 측정해야 합니다.
+- `relative` 모드는 기준면 없이 phase 기반 형상 미리보기를 생성하고, 물리 단위 높이는 기준면과 실장비 캘리브레이션을 사용하는 `triangulation` 또는 `inverse-linear` 모드에서 계산합니다.
+- 디코더는 프로젝터 기울기, 초점, PCB 반사·포화 상태를 확인할 수 있도록 valid mask와 진단 이미지를 height map과 함께 출력합니다.
 
 ## 기술 스택
 
@@ -91,5 +88,3 @@ White / Black correction
 - [PCB FPP 디코더](https://github.com/eriverOoO/PCBSCAN_calc_height)
 - [높이 계산 이론](https://github.com/eriverOoO/PCBSCAN_calc_height/blob/main/HEIGHT_CALCULATION_THEORY.md)
 - [디코더 핵심 구현](https://github.com/eriverOoO/PCBSCAN_calc_height/blob/main/pcb_fpp_decoder/decoder.py)
-
-[← 전체 포트폴리오](../)

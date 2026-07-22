@@ -6,11 +6,9 @@
 - 환경: Ubuntu 20.04, ROS 2 Foxy, CARLA, Python
 - 공통 인터페이스: `/mobile_system_control/ego_vehicle` → `/mobile_system_control/control_msg`
 
-![저장소 waypoint와 동일 파라미터로 재구성한 레이싱 라인](../assets/msc_racing_line.png)
-
 ## 같은 프로젝트의 두 구현
 
-공동 포트폴리오의 기존 구현과 `MSC_RacingSimul`은 같은 과제·트랙·ROS 2 인터페이스를 사용하지만 제어 전략과 검증 방법이 다릅니다. 두 결과를 덮어쓰지 않고 한 프로젝트 안의 구현 비교로 정리했습니다.
+공동 프로젝트의 기존 구현과 `MSC_RacingSimul`은 같은 과제·트랙·ROS 2 인터페이스를 사용하며, 서로 다른 제어 전략과 검증 방법을 적용했습니다.
 
 | 구분 | 기존 공동 프로젝트 자료 | MSC_RacingSimul |
 | --- | --- | --- |
@@ -45,17 +43,9 @@ flowchart LR
 - Ackermann 기반 조향 feed-forward와 yaw 오차 feedback을 결합합니다.
 - mock simulator가 차량 상태 토픽과 제어 토픽을 그대로 연결해 제어 루프를 재현합니다.
 
-기존 공동 프로젝트 구현은 Stanley + PID + feed-forward와 최적 궤적을 사용했고, 저장된 README에는 113초대 랩타임과 게인 비교 결과가 기록되어 있습니다. 이 수치는 해당 구현의 결과이며 `MSC_RacingSimul`의 별도 성능 수치로 재사용하지 않았습니다.
-
 ## 코드와 자료
 
 - [기존 공동 프로젝트 README](https://github.com/junmyounggyu/2026-autonomous-driving-hackathon-portfolio/blob/main/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A0%9C%EC%96%B4%20%ED%85%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%28%EC%A0%84%EB%AA%85%EA%B7%9C%29/README.md)
 - [기존 Stanley + PID/FF 제어 코드](https://github.com/junmyounggyu/2026-autonomous-driving-hackathon-portfolio/blob/main/%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%A0%9C%EC%96%B4%20%ED%85%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%28%EC%A0%84%EB%AA%85%EA%B7%9C%29/racing_node.py)
 - [MSC_RacingSimul 제어 노드](https://github.com/eriverOoO/MSC_RacingSimul/blob/main/src/my_racing_pkg/my_racing_pkg/racing_node.py)
 - [MSC_RacingSimul mock simulator](https://github.com/eriverOoO/MSC_RacingSimul/blob/main/src/my_racing_pkg/my_racing_pkg/mock_sim.py)
-
-## 다음 검증
-
-동일한 CARLA 맵과 초기 조건에서 두 제어기의 lap time, cross-track error, 최대 조향 변화율을 함께 측정하면 알고리즘 차이를 정량적으로 비교할 수 있습니다.
-
-[← 전체 포트폴리오](../)

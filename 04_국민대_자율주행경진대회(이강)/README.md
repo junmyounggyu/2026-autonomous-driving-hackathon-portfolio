@@ -52,19 +52,9 @@ flowchart LR
 
 `ROS 2` · `Python` · `OpenCV` · `NumPy` · `sensor_msgs/LaserScan` · `xycar_msgs`
 
-## 라이선스 주의
-
-`track_drive.py`에는 교육용으로 제공된 기반 코드의 외부 유출·상업 이용 제한 문구가 있습니다. 이 포트폴리오에는 소스를 복제하지 않고 구조와 공개 저장소 링크만 수록했습니다. 자료를 다른 저장소로 옮길 때도 원 라이선스와 대회 배포 규정을 다시 확인해야 합니다.
-
-## 현재 보강이 필요한 자료
-
-저장소에는 대회 결과와 정량 지표가 없으므로 완주 여부나 순위를 추정해 쓰지 않았습니다. 제출 전에는 코스 구성, 담당 역할, 완주 영상, 평균 속도, 차선 이탈·비상 정지 사례를 실제 기록에 맞게 추가하는 것이 좋습니다.
-
 ## 코드 근거
 
 - [통합 주행 제어](https://github.com/eriverOoO/skkrrr/blob/main/track_drive/track_drive.py)
 - [카메라 차선 인식](https://github.com/eriverOoO/skkrrr/blob/main/track_drive/lane_detection.py)
 - [라바콘 경로 생성](https://github.com/eriverOoO/skkrrr/blob/main/track_drive/cone_detection.py)
 - [LiDAR 장애물 처리](https://github.com/eriverOoO/skkrrr/blob/main/track_drive/lidar.py)
-
-[← 전체 포트폴리오](../)
